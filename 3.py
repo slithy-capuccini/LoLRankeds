@@ -58,7 +58,7 @@ def change_to_lose_3(event):
     button3.configure(fg="yellow")
     button3.configure(activebackground="#e10000")
 #reset all to null again
-def reseteo():
+def save():
     with open("games.txt", "r") as file:
         first_line_2 = file.readline()
         second_line_2 = file.readline()
@@ -76,6 +76,22 @@ def reseteo():
     replace_line('games.txt',1,"Null")
     replace_line('games.txt',2,"Null")
     replace_line('games.txt',3,complete)
+    button.configure(text="Null")
+    button.configure(bg="#909090")
+    button.configure(fg="red")
+    button.configure(activebackground="#989595")
+    button2.configure(text="Null")
+    button2.configure(bg="#909090")
+    button2.configure(fg="red")
+    button2.configure(activebackground="#989595")
+    button3.configure(text="Null")
+    button3.configure(bg="#909090")
+    button3.configure(fg="red")
+    button3.configure(activebackground="#989595")
+def reset():
+    replace_line('games.txt',0,"Null")
+    replace_line('games.txt',1,"Null")
+    replace_line('games.txt',2,"Null")
     button.configure(text="Null")
     button.configure(bg="#909090")
     button.configure(fg="red")
@@ -166,17 +182,25 @@ elif third_line=="Lose":
 button3.pack()
 button3.bind('<Button-1>',change_to_win_3)
 button3.bind('<Button-3>',change_to_lose_3)
-#button of reset
+#button of save
 button_reset = tk.Button(
+    text="Save",
+    width=10,
+    height=2,
+    bg="#f8ff00",
+    activebackground="#e8ef00",
+    command=save
+)
+button_reset.pack()
+#
+button_reseteo = tk.Button(
     text="Reset",
     width=10,
     height=2,
     bg="#c7c7c7",
     activebackground="#bbbbbb",
-    command=reseteo
+    command=reset
 )
-button_reset.pack()
-#new day 
-
+button_reseteo.pack()
 #mainloop
 window.mainloop()
