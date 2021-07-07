@@ -1,5 +1,5 @@
 import tkinter as tk
-##read the txt and save in vavr
+##read the txt and save in var
 with open("games.txt", "r") as file:
     first_line = file.readline()
     second_line = file.readline()
@@ -10,12 +10,14 @@ second_line=second_line.strip()
 third_line=third_line.strip()
 last_day=last_day.strip()
 print(last_day)
+#replace function
 def replace_line(file_name, line_num, text):
     lines = open(file_name, 'r').readlines()
     lines[line_num] = text + '\n'
     out = open(file_name, 'w')
     out.writelines(lines)
     out.close()
+#change to win functions
 def change_to_win(event):
     replace_line('games.txt',0,"Win")
     button.configure(text="Win")
@@ -54,6 +56,7 @@ def change_to_lose_3(event):
     button3.configure(bg="#ff0000")
     button3.configure(fg="yellow")
     button3.configure(activebackground="#e10000")
+#reset all to null again
 def reseteo():
     replace_line('games.txt',0,"Null")
     replace_line('games.txt',1,"Null")
@@ -91,13 +94,15 @@ if first_line=="Win":
     button.configure(bg="#52eb00") 
     button.configure(fg="yellow")
     button.configure(activebackground="#49cc03")
+#change the button to lose
 elif first_line=="Lose":
     button.configure(text="Lose")
     button.configure(bg="#ff0000")
     button.configure(fg="yellow")
     button.configure(activebackground="#e10000")
-
+#button .pack
 button.pack()
+#button right and left
 button.bind('<Button-1>',change_to_win)
 button.bind('<Button-3>',change_to_lose)
 #same shit
