@@ -1,4 +1,5 @@
 import tkinter as tk
+import datetime
 ##read the txt and save in var
 with open("games.txt", "r") as file:
     first_line = file.readline()
@@ -58,9 +59,23 @@ def change_to_lose_3(event):
     button3.configure(activebackground="#e10000")
 #reset all to null again
 def reseteo():
+    with open("games.txt", "r") as file:
+        first_line_2 = file.readline()
+        second_line_2 = file.readline()
+        third_line_2=file.readline()
+    dt = datetime.datetime.now()
+    complete=dt
+    complete=str(complete)
+    with open("games.txt", "a+") as file_object:
+        file_object.seek(0)
+        data=file_object.read(100)
+        if len(data)>0:
+            file_object.write("\n")
+        file_object.write('['+first_line_2+','+second_line_2+','+third_line_2+','+complete+']')
     replace_line('games.txt',0,"Null")
     replace_line('games.txt',1,"Null")
     replace_line('games.txt',2,"Null")
+    replace_line('games.txt',3,complete)
     button.configure(text="Null")
     button.configure(bg="#909090")
     button.configure(fg="red")
